@@ -1,5 +1,6 @@
 package pack1;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
@@ -14,7 +15,11 @@ public class Var {
 	static int screenwidth = 800, screenheight = 600;
 
 	static int x = 20, y = 185;
+	static Color playerColor = Color.WHITE;
+	
 	static int gegnerx = 740, gegnery = 185;
+	static Color enemyColor = Color.WHITE;
+	
 	static int ballx = 600, bally = 400;
 
 	static boolean moveup = false, movedown = false;
@@ -22,6 +27,8 @@ public class Var {
 	static int balldirx = 1, balldiry = -1;
 
 	static int playerPoints = 0, gegnerPoints = 0;
+	static Color playerScoreColor = Color.WHITE;
+	static Color gegnerScoreColor = Color.WHITE;
 
 	static Font pixelfont;
 

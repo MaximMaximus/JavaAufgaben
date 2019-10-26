@@ -30,7 +30,7 @@ public class GegnerMovement {
 
 			}
 
-		}, 0, 6);
+		}, 0, 7);
 	}
 
 }
