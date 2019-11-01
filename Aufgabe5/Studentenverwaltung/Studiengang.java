@@ -36,6 +36,14 @@ public class Studiengang {
 		this.kurs.add(mykurs);
 	}
 
+	public String getAllKurse() {
+		String data = "";
+		for (Kurs akurs : this.kurs) {
+			data += akurs.getName() + "\nCredits: " + akurs.getCredits() + "\nMultiplikator: " + akurs.getMultiplikator() + "\n---\n";
+		}
+		return data;
+	}
+
 	public String getData() {
 		String data = "";
 		for (Kurs einkurs : this.kurs) {
@@ -45,10 +53,10 @@ public class Studiengang {
 		}
 		return data;
 	}
-	
+
 	public int anzahlKurse() {
 		int summe = 0;
-		for(Kurs akurs : this.getKurs()) {
+		for (Kurs akurs : this.getKurs()) {
 			summe++;
 		}
 		return summe;

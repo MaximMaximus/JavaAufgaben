@@ -66,18 +66,18 @@ public class Hochschule {
 		}
 		return data;
 	}
-	
+
 	public int anzahlStudiengaenge() {
 		int summe = 0;
-		for(Studiengang gang : this.getStudiengang()) {
+		for (Studiengang gang : this.getStudiengang()) {
 			summe++;
 		}
 		return summe;
 	}
-	
+
 	public int anzahlStudenten() {
 		int summe = 0;
-		for(Student astudent : this.getStudent()) {
+		for (Student astudent : this.getStudent()) {
 			summe++;
 		}
 		return summe;

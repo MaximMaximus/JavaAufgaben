@@ -89,12 +89,13 @@ public class Student {
 
 		for (Kurs akurs : this.getStudiengang().getKurs()) {
 			if (akurs.getNote() != 0) {
-				//System.out.println("Note: " + akurs.getNote() + " Multi: " + akurs.getMultiplikator());
+				// System.out.println("Note: " + akurs.getNote() + " Multi: " +
+				// akurs.getMultiplikator());
 				note += (akurs.getNote() * akurs.getMultiplikator() * akurs.getCredits());
 				anzahl += (akurs.getMultiplikator() * akurs.getCredits());
 			}
 		}
-		//System.out.println("Note: " + note + " Anzahl: " + anzahl);
+		// System.out.println("Note: " + note + " Anzahl: " + anzahl);
 		return (note / anzahl);
 	}
 

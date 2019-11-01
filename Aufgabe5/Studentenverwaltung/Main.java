@@ -10,45 +10,59 @@ public class Main {
 	public static void main(String[] args) {
 
 		// Hochschule erstellen und mit daten füllen
-		othInitialisieren();
+		// othInitialisieren();
+
+		Studiengang info = informatikBachelorInitialisieren();
+		System.out.println(info.getAllKurse());
 
 		Scanner sc = new Scanner(System.in);
 		int wahl = 0;
 		int ende = 8;
 
-		// Test
+		String othName = "OTH-Regensburg";
+		oth.setName(othName);
+		oth.addStudiengang(informatikBachelorInitialisieren());
 
+		// Test
 		Student max = new Student();
 		max.setVorname("Max");
 		max.setNachname("Mustermann");
 		max.setMatrikelnummer(1234567);
-		max.setStudiengang(oth.getStudiengang().get(0));
+		max.setStudiengang(informatikBachelorInitialisieren());
 		max.setEmail();
 
 		oth.addStudent(max);
-
+		// erster Studienabschnitt
+		max.getStudiengang().getKurs().get(0).setNote(0);
 		max.getStudiengang().getKurs().get(1).setNote(3.3);
+		max.getStudiengang().getKurs().get(2).setNote(0);
 		max.getStudiengang().getKurs().get(3).setNote(2);
+		max.getStudiengang().getKurs().get(4).setNote(1);
 		max.getStudiengang().getKurs().get(5).setNote(1.7);
 		max.getStudiengang().getKurs().get(6).setNote(2);
+		max.getStudiengang().getKurs().get(7).setNote(0);
 		max.getStudiengang().getKurs().get(8).setNote(3.3);
-		max.getStudiengang().getKurs().get(4).setNote(1);
-		
+		max.getStudiengang().getKurs().get(9).setNote(0);
+
+		// zweiter Studienabschnitt
+
+		// dritter Studienabschnitt
+
 		Student anna = new Student();
 		anna.setVorname("Anna");
 		anna.setNachname("Hanna");
 		anna.setMatrikelnummer(7654321);
-		anna.setStudiengang(oth.getStudiengang().get(0));
+		anna.setStudiengang(informatikBachelorInitialisieren());
 		anna.setEmail();
-		
+
 		oth.addStudent(anna);
-		
+
 		anna.getStudiengang().getKurs().get(3).setNote(1);
 		anna.getStudiengang().getKurs().get(5).setNote(1);
 		anna.getStudiengang().getKurs().get(6).setNote(1);
 
-		// System.out.println(max.printStudentData());
-		// System.out.println(max.printStudentKurs());
+		System.out.println(max.printStudentData());
+		System.out.println(max.printStudentKurs());
 
 		// Hauptschliefe
 		do {
@@ -193,25 +207,27 @@ public class Main {
 
 	private static Studiengang fachWaehlen(Hochschule schule) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Studiengang wählen: ");
-		System.out.println(schule.studiengaengeAusgeben());
-		int wahl = 0;
+		Studiengang temp = new Studiengang();
+		boolean eingabe = false;
 		do {
+			System.out.println("Studiengang wählen: ");
+			System.out.println(schule.studiengaengeAusgeben());
+			int wahl = 0;
 			wahl = inputTester.testeInt();
-			if (wahl != -1 && wahl != 0 && wahl <= schule.anzahlStudiengaenge()) {
+			switch (wahl) {
+			case 1:
+				temp = informatikBachelorInitialisieren();
+				eingabe = true;
 				break;
-			} else {
-				System.out.println("Fehler!");
-				System.out.println("Bitte nochmals wählen: ");
+			default:
+				System.out.println("Ungültige Eingabe!");
+				break;
 			}
-		} while (true);
-		return schule.getStudiengang().get(wahl - 1);
+		} while (eingabe == false);
+		return temp;
 	}
 
-	public static void othInitialisieren() {
-
-		String othName = "OTH-Regensburg";
-		oth.setName(othName);
+	public static Studiengang informatikBachelorInitialisieren() {
 
 		// erster Studienabschnitt
 		Kurs ds = new Kurs();
@@ -264,7 +280,120 @@ public class Main {
 		ma2.setMultiplikator(1);
 		ma2.setName("Mathematik 2");
 
-		// TODO: zweiten Studienabschnitt
+		// zweiten Studienabschnitt
+		Kurs ad = new Kurs();
+		ad.setCredits(8);
+		ad.setMultiplikator(2);
+		ad.setName("Algorithmen und Datenstrukturen");
+
+		Kurs db = new Kurs();
+		db.setCredits(7);
+		db.setMultiplikator(2);
+		db.setName("Datenbanken");
+
+		Kurs st = new Kurs();
+		st.setCredits(5);
+		st.setMultiplikator(2);
+		st.setName("Statistik");
+
+		Kurs os = new Kurs();
+		os.setCredits(8);
+		os.setMultiplikator(2);
+		os.setName("Betriebssysteme");
+
+		Kurs cr = new Kurs();
+		cr.setCredits(5);
+		cr.setMultiplikator(2);
+		cr.setName("Computerarithmetik und Rechenverfahren");
+
+		Kurs rt = new Kurs();
+		rt.setCredits(7);
+		rt.setMultiplikator(2);
+		rt.setName("Rechnertechnik");
+
+		Kurs se = new Kurs();
+		se.setCredits(8);
+		se.setMultiplikator(2);
+		se.setName("Software Engineering");
+
+		Kurs ks = new Kurs();
+		ks.setCredits(7);
+		ks.setMultiplikator(2);
+		ks.setName("Kommunikationssysteme");
+
+		Kurs fw1 = new Kurs();
+		fw1.setCredits(5);
+		fw1.setMultiplikator(2);
+		fw1.setName("Fachbezogenes Wahlpflichtmodul 1");
+
+		Kurs aw2 = new Kurs();
+		aw2.setCredits(2);
+		aw2.setMultiplikator(0.5);
+		aw2.setName("AW-Modul 2");
+
+		Kurs aw3 = new Kurs();
+		aw3.setCredits(2);
+		aw3.setMultiplikator(0.5);
+		aw3.setName("AW-Modul 3");
+
+		// TODO: Praxisseminar und Praktikum nach modulhandbuch ohne Notengewichtung
+
+		// dritter Studienabschnitt
+		Kurs vm1 = new Kurs();
+		vm1.setCredits(5);
+		vm1.setMultiplikator(2);
+		vm1.setName("Vertiefungsmodul IN 1/1");
+
+		Kurs vm2 = new Kurs();
+		vm2.setCredits(5);
+		vm2.setMultiplikator(2);
+		vm2.setName("Vertiefungsmodul IN 1/2");
+
+		Kurs vm3 = new Kurs();
+		vm3.setCredits(5);
+		vm3.setMultiplikator(2);
+		vm3.setName("Vertiefungsmodul IN 1/3");
+
+		Kurs vm4 = new Kurs();
+		vm4.setCredits(5);
+		vm4.setMultiplikator(2);
+		vm4.setName("Vertiefungsmodul IN 2/1");
+
+		Kurs vm5 = new Kurs();
+		vm5.setCredits(5);
+		vm5.setMultiplikator(2);
+		vm5.setName("Vertiefungsmodul IN 2/2");
+
+		Kurs vm6 = new Kurs();
+		vm6.setCredits(5);
+		vm6.setMultiplikator(2);
+		vm6.setName("Vertiefungsmodul IN 2/3");
+
+		Kurs or = new Kurs();
+		or.setCredits(5);
+		or.setMultiplikator(2);
+		or.setName("Operations Research");
+
+		Kurs fw2 = new Kurs();
+		fw2.setCredits(5);
+		fw2.setMultiplikator(2);
+		fw2.setName("Fachbezogenes Wahlpflichtmodul 2");
+
+		Kurs fw3 = new Kurs();
+		fw3.setCredits(5);
+		fw3.setMultiplikator(2);
+		fw3.setName("Fachbezogenes Wahlpflichtmodul 3");
+
+		Kurs ba = new Kurs();
+		ba.setCredits(12);
+		ba.setMultiplikator(6);
+		ba.setName("Bachelorarbeit");
+
+		// TODO: keine Notengewichtung
+//		Kurs bs = new Kurs();
+//		ba.setCredits(3);
+//		ba.setMultiplikator(1);
+//		ba.setName("Bachelorseminar");
 
 		// Studiengang
 		Studiengang informatikB = new Studiengang();
@@ -280,8 +409,32 @@ public class Main {
 		informatikB.addKurs(pg2);
 		informatikB.addKurs(ma1);
 		informatikB.addKurs(ma2);
+		informatikB.addKurs(ad);
+		informatikB.addKurs(db);
+		informatikB.addKurs(st);
+		informatikB.addKurs(os);
+		informatikB.addKurs(cr);
+		informatikB.addKurs(rt);
+		informatikB.addKurs(se);
+		informatikB.addKurs(ks);
+		informatikB.addKurs(fw1);
+		informatikB.addKurs(aw2);
+		informatikB.addKurs(aw3);
+		// Praxisseminar
+		// Praktikum
+		informatikB.addKurs(vm1);
+		informatikB.addKurs(vm2);
+		informatikB.addKurs(vm3);
+		informatikB.addKurs(vm4);
+		informatikB.addKurs(vm5);
+		informatikB.addKurs(vm6);
+		informatikB.addKurs(or);
+		informatikB.addKurs(fw2);
+		informatikB.addKurs(fw3);
+		informatikB.addKurs(ba);
+		// Bachelorseminar
 
-		oth.addStudiengang(informatikB);
+		return informatikB;
 	}
 
 }

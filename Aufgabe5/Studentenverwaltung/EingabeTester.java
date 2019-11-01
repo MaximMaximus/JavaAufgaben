@@ -21,7 +21,7 @@ public class EingabeTester {
 
 		return input;
 	}
-	
+
 	public double testeDouble() {
 		Scanner sc = new Scanner(System.in);
 		double input = 0;
