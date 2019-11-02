@@ -8,22 +8,26 @@ public class Main {
 	static EingabeTester inputTester = new EingabeTester();
 
 	public static void main(String[] args) {
-
+		
+		// Alte Version
 		// Hochschule erstellen und mit daten füllen
 		// othInitialisieren();
-
-		Studiengang info = informatikBachelorInitialisieren();
-		System.out.println(info.getAllKurse());
-
+		
+		// Alle Fächer ausgeben
+		 Studiengang info = informatikBachelorInitialisieren();
+		 System.out.println(info.getAllKurse());
+		
+		// Variablen
 		Scanner sc = new Scanner(System.in);
 		int wahl = 0;
 		int ende = 8;
-
+		
+		// OTH Name und Studiengänge hinzufügen
 		String othName = "OTH-Regensburg";
 		oth.setName(othName);
 		oth.addStudiengang(informatikBachelorInitialisieren());
 
-		// Test
+		// Teststudent
 		Student max = new Student();
 		max.setVorname("Max");
 		max.setNachname("Mustermann");
@@ -32,6 +36,8 @@ public class Main {
 		max.setEmail();
 
 		oth.addStudent(max);
+		
+		
 		// erster Studienabschnitt
 		max.getStudiengang().getKurs().get(0).setNote(0);
 		max.getStudiengang().getKurs().get(1).setNote(3.3);
@@ -47,7 +53,11 @@ public class Main {
 		// zweiter Studienabschnitt
 
 		// dritter Studienabschnitt
-
+		
+		System.out.println(max.printStudentData());
+		System.out.println(max.printStudentKurs());
+		
+		// Teststudent
 		Student anna = new Student();
 		anna.setVorname("Anna");
 		anna.setNachname("Hanna");
@@ -60,9 +70,9 @@ public class Main {
 		anna.getStudiengang().getKurs().get(3).setNote(1);
 		anna.getStudiengang().getKurs().get(5).setNote(1);
 		anna.getStudiengang().getKurs().get(6).setNote(1);
-
-		System.out.println(max.printStudentData());
-		System.out.println(max.printStudentKurs());
+		
+		System.out.println(anna.printStudentData());
+		System.out.println(anna.printStudentKurs());
 
 		// Hauptschliefe
 		do {
@@ -337,7 +347,16 @@ public class Main {
 		aw3.setName("AW-Modul 3");
 
 		// TODO: Praxisseminar und Praktikum nach modulhandbuch ohne Notengewichtung
-
+		Kurs ps = new Kurs();
+		ps.setCredits(2);
+		ps.setMultiplikator(1);
+		ps.setName("Praxisseminar");
+		
+		Kurs pr = new Kurs();
+		pr.setCredits(24);
+		pr.setMultiplikator(1);
+		pr.setName("Praktikum");
+		
 		// dritter Studienabschnitt
 		Kurs vm1 = new Kurs();
 		vm1.setCredits(5);
@@ -389,11 +408,11 @@ public class Main {
 		ba.setMultiplikator(6);
 		ba.setName("Bachelorarbeit");
 
-		// TODO: keine Notengewichtung
-//		Kurs bs = new Kurs();
-//		ba.setCredits(3);
-//		ba.setMultiplikator(1);
-//		ba.setName("Bachelorseminar");
+		// TODO: Bachelorseminar Notengewihtung
+		Kurs bs = new Kurs();
+		ba.setCredits(3);
+		ba.setMultiplikator(1);
+		ba.setName("Bachelorseminar");
 
 		// Studiengang
 		Studiengang informatikB = new Studiengang();
@@ -420,8 +439,8 @@ public class Main {
 		informatikB.addKurs(fw1);
 		informatikB.addKurs(aw2);
 		informatikB.addKurs(aw3);
-		// Praxisseminar
-		// Praktikum
+		informatikB.addKurs(ps);
+		informatikB.addKurs(pr);
 		informatikB.addKurs(vm1);
 		informatikB.addKurs(vm2);
 		informatikB.addKurs(vm3);
@@ -432,7 +451,7 @@ public class Main {
 		informatikB.addKurs(fw2);
 		informatikB.addKurs(fw3);
 		informatikB.addKurs(ba);
-		// Bachelorseminar
+		informatikB.addKurs(bs);
 
 		return informatikB;
 	}

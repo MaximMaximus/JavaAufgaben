@@ -38,8 +38,12 @@ public class Studiengang {
 
 	public String getAllKurse() {
 		String data = "";
+		int i = 0;
+		System.out.println("Fächer Studiengang: " + this.getName() + "\n");
 		for (Kurs akurs : this.kurs) {
-			data += akurs.getName() + "\nCredits: " + akurs.getCredits() + "\nMultiplikator: " + akurs.getMultiplikator() + "\n---\n";
+			data += i + " " + akurs.getName() + "\nCredits: " + akurs.getCredits() + "\nMultiplikator: "
+					+ akurs.getMultiplikator() + "\n---\n";
+			i++;
 		}
 		return data;
 	}
