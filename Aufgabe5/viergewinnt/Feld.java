@@ -46,7 +46,7 @@ public class Feld {
 				counter++;
 			}
 		}
-		if (counter == xAchse - 1) {
+		if (counter == yAchse) {
 			return true;
 		}
 		return false;
