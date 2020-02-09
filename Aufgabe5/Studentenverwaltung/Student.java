@@ -92,8 +92,7 @@ public class Student {
 				// System.out.println("Note: " + akurs.getNote() + " Multi: " +
 				// akurs.getMultiplikator());
 				note += (akurs.getNote() * akurs.getMultiplikator() * akurs.getCredits());
-				// anzahl += (akurs.getMultiplikator() * akurs.getCredits());
-				anzahl += akurs.getCredits();
+				anzahl += akurs.getMultiplikator() <= 1 ? akurs.getCredits() : akurs.getCredits() * akurs.getMultiplikator();
 			}
 		}
 		// System.out.println("Note: " + note + " Anzahl: " + anzahl);
